@@ -45,7 +45,7 @@ source=(
   "${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
 )
 sha512sums=(
-  'eeaa74552fe8e01c40566ac3c8b3d41085f800863ac516e30fe1242f40d3401e4e872279149776f29d3ba78a7a16337a794ad26230efab4dd1847d42bffa81ce'
+  '41672b4b9292a6860fa3bad815170cb7da934cc12091ed4a2b85896370c7f7bbd18d363e40ba8aef08c113082de7b06662eaf7fb500f9b4bf7a6db50cfc035c9'
 )
 
 build() {

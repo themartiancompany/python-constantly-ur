@@ -14,7 +14,7 @@ _proj="twisted"
 _pkg=constantly
 _pkgname="${_pkg}"
 pkgname="${_py}-${_pkg}"
-pkgver=15.1.0
+pkgver=23.10.4
 pkgrel=14
 pkgdesc='Symbolic constants in Python'
 arch=(
@@ -31,7 +31,11 @@ depends=(
   "${_py}<${_pynextver}"
 )
 makedepends=(
+  "${_py}-build"
+  "${_py}-installer"
   "${_py}-setuptools"
+  "${_py}-wheel"
+  "${_py}-versioneer"
 )
 checkdepends=(
   'python-pytest'
@@ -48,8 +52,9 @@ build() {
   cd \
     "${_pkg}-${pkgver}"
   "${_py}" \
-    setup.py \
-      build
+    -m \
+      build \
+    -nw
 }
 
 check() {
@@ -62,10 +67,10 @@ package() {
   cd \
     "${_pkg}-${pkgver}"
   "${_py}" \
-    setup.py \
-      install \
-        --root="${pkgdir}" \
-        --optimize=1
+    -m \
+      installer \
+    --destdir="${pkgdir}" \
+    dist/*.whl
   install \
     -Dm644 \
     LICENSE \
